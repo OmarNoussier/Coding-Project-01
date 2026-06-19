@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Feedback Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>User Feedback Form</h1>
+    <p class="subtitle">
+      Tell us what you think. Your input helps us improve our service.
+    </p>
+
+    <!--
+      Step 2: the form layout.
+      Every field sits in a ".field" wrapper that also holds:
+        - a tooltip span (shown on mouseover, hidden on mouseout)
+        - a small message span used for validation feedback
+      The whole form is one container, which lets cp_1.js use a single
+      parent listener (event delegation) instead of one per field.
+    -->
+    <form id="feedback-form" novalidate>
+      <!-- Name -->
+      <div class="field" data-tooltip="Enter your full name so we know who to thank.">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Ava Thompson" />
+        <span class="tooltip"></span>
+        <span class="message" id="name-message"></span>
+      </div>
+
+      <!-- Email -->
+      <div class="field" data-tooltip="We only use your email to follow up on your feedback.">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="e.g. ava@example.com" />
+        <span class="tooltip"></span>
+        <span class="message" id="email-message"></span>
+      </div>
+
+      <!-- Comments -->
+      <div class="field" data-tooltip="Share as much detail as you like — the counter shows your length.">
+        <label for="comments">Comments</label>
+        <textarea id="comments" name="comments" rows="5"
+          placeholder="What did you like? What could be better?"></textarea>
+        <!-- Live character counter, updated on every keystroke -->
+        <span class="counter" id="comments-counter">0 characters</span>
+        <span class="tooltip"></span>
+        <span class="message" id="comments-message"></span>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" id="submit-btn">Submit Feedback</button>
+    </form>
+
+    <h2>Submitted Feedback</h2>
+    <!--
+      Step 3: valid feedback entries are created in JavaScript and
+      appended into this container with document.createElement + appendChild.
+    -->
+    <div id="feedback-display">
+      <p class="empty-note">No feedback submitted yet.</p>
+    </div>
+    <script src="cp_1.js"></script>
+  </body>
+</html>
